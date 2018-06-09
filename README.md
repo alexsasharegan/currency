@@ -1,2 +1,3 @@
 # currency
+
 JavaScript currency lib.

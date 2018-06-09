@@ -1,0 +1,26 @@
+{
+  "name": "currency",
+  "version": "1.0.0",
+  "description": "JavaScript currency lib.",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexsasharegan/currency.git"
+  },
+  "author": "Alex Regan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexsasharegan/currency/issues"
+  },
+  "files": [
+    "lib"
+  ],
+  "homepage": "https://github.com/alexsasharegan/currency#readme",
+  "devDependencies": {
+    "typescript": "^2.9.1"
+  }
+}
