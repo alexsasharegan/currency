@@ -1,0 +1,2 @@
+# currency
+JavaScript currency lib.
