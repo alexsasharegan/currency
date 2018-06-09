@@ -3,8 +3,12 @@
  */
 const CurrencyCoefficient = 100;
 
-function toPennies(x: number): number {
-  return x * CurrencyCoefficient;
+function toPennies(price: number): number {
+  return price * CurrencyCoefficient;
+}
+
+function toDollars(pennies: number): number {
+  return pennies / CurrencyCoefficient;
 }
 
 export interface CurrencyOptions {
@@ -23,9 +27,12 @@ export class Currency {
   private numFmt: Intl.NumberFormat;
 
   constructor(price: number, options: Partial<CurrencyOptions> = {}) {
-    let { locales, localeOptions } = options;
+    let { locales = "en-US", localeOptions = {} } = options;
     this.value = toPennies(price);
-    this.numFmt = new Intl.NumberFormat(locales, localeOptions);
+    this.numFmt = new Intl.NumberFormat(locales, {
+      currency: "USD",
+      ...localeOptions,
+    });
   }
 
   public add: (price: number) => this = price => {
@@ -47,6 +54,8 @@ export class Currency {
   };
 
   public toString: () => string = () => {
-    return this.numFmt.format(this.value);
+    return this.numFmt.format(this.toNumber());
   };
+
+  public toNumber: () => number = () => toDollars(this.value);
 }
