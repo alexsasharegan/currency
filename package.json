@@ -1,9 +1,13 @@
 {
-  "name": "currency",
+  "name": "@alexsasharegan/currency",
   "version": "1.0.0",
   "description": "JavaScript currency lib.",
   "main": "lib/index.js",
   "scripts": {
+    "prepublishOnly": "npm run build",
+    "prerelease": "npm run test:cov",
+    "release": "standard-version",
+    "postrelease": "git push --follow-tags origin master && npm publish",
     "build": "tsc",
     "test": "jest"
   },
@@ -19,8 +23,22 @@
   "files": [
     "lib"
   ],
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$"
+  },
   "homepage": "https://github.com/alexsasharegan/currency#readme",
   "devDependencies": {
+    "@types/jest": "^23.0.0",
+    "jest": "^23.1.0",
+    "standard-version": "^4.4.0",
+    "ts-jest": "^22.4.6",
     "typescript": "^2.9.1"
   }
 }
